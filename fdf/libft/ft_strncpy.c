@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cboulonn <cboulonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/09 13:51:49 by cboulonn          #+#    #+#             */
-/*   Updated: 2016/07/07 13:58:45 by cboulonn         ###   ########.fr       */
+/*   Created: 2016/02/25 14:58:34 by cboulonn          #+#    #+#             */
+/*   Updated: 2016/04/19 15:05:44 by cboulonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# include <stdlib.h>
-# include <fcntl.h>
-# include "libft/libft.h"
-# define BUFF_SIZE 80
+#include "libft.h"
 
-typedef struct		s_lst
+char	*ft_strncpy(char *dst, const char *src, size_t len)
 {
-	char			*res_buf;
-	int				save_fd;
-	struct s_lst	*next;
-}					t_lst;
+	size_t	index;
 
-int					get_next_line(int fd, char **line);
-
-#endif
+	index = 0;
+	while (index != len && src[index] != '\0')
+	{
+		dst[index] = src[index];
+		index++;
+	}
+	while (index < len)
+	{
+		dst[index] = '\0';
+		index++;
+	}
+	return (dst);
+}

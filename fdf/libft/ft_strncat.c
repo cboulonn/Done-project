@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cboulonn <cboulonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/09 13:51:49 by cboulonn          #+#    #+#             */
-/*   Updated: 2016/07/07 13:58:45 by cboulonn         ###   ########.fr       */
+/*   Created: 2015/10/22 13:57:51 by cboulonn          #+#    #+#             */
+/*   Updated: 2016/02/25 16:27:17 by cboulonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# include <stdlib.h>
-# include <fcntl.h>
-# include "libft/libft.h"
-# define BUFF_SIZE 80
+#include "libft.h"
 
-typedef struct		s_lst
+char		*ft_strncat(char *s1, const char *s2, size_t n)
 {
-	char			*res_buf;
-	int				save_fd;
-	struct s_lst	*next;
-}					t_lst;
+	int		cd;
+	size_t	cs;
 
-int					get_next_line(int fd, char **line);
-
-#endif
+	cd = 0;
+	cs = 0;
+	while (s1[cd] != '\0')
+		cd++;
+	while (s2[cs] != '\0' && cs < n)
+	{
+		s1[cd] = s2[cs];
+		cd++;
+		cs++;
+	}
+	s1[cd] = '\0';
+	return (s1);
+}

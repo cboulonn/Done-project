@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_linelen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cboulonn <cboulonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/09 13:51:49 by cboulonn          #+#    #+#             */
-/*   Updated: 2016/07/07 13:58:45 by cboulonn         ###   ########.fr       */
+/*   Created: 2016/04/18 16:20:09 by cboulonn          #+#    #+#             */
+/*   Updated: 2016/04/23 15:32:04 by cboulonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# include <stdlib.h>
-# include <fcntl.h>
-# include "libft/libft.h"
-# define BUFF_SIZE 80
+#include "libft.h"
 
-typedef struct		s_lst
+int		ft_linelen(char *s, char n)
 {
-	char			*res_buf;
-	int				save_fd;
-	struct s_lst	*next;
-}					t_lst;
+	int	i;
 
-int					get_next_line(int fd, char **line);
-
-#endif
+	i = 0;
+	while (s[i] != n && s[i] != '\0')
+	{
+		i++;
+	}
+	return (i);
+}

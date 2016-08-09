@@ -6,37 +6,27 @@
 #    By: cboulonn <cboulonn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/23 09:50:45 by cboulonn          #+#    #+#              #
-#    Updated: 2016/07/07 13:51:41 by cboulonn         ###   ########.fr        #
+#    Updated: 2016/07/25 16:44:38 by cboulonn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC_PATH = ./
 
-SRC_NAME = ft_read.c \
-		   ft_read2.c \
-		   get_arg_opt.c \
-		   get_info.c \
-		   get_info2.c \
-		   get_info3.c \
-		   list.c \
-		   print.c \
-		   print2.c \
-		   sort_functions.c \
-		   sort_f2.c \
-		   sort_f3.c \
-		   ft_start.c \
-		   ft_start2.c \
-		   list_del.c \
-		   sort_arg_rep.c \
-		   get_length.c
+SRC_NAME = ft_parse_fdf.c \
+           ft_parse_suite.c \
+		   ft_strsplint.c \
+		   ft_mlx_draw.c \
+		   ft_mlx_draw_2.c \
+		   ft_mlx_draw_3.c \
+		   ft_parse_fdf_2.c
 
 OBJ_PATH = ./obj/
 
-NAME = ft_ls
+NAME = fdf
 
 CC = gcc
-CFLAGS = -Werror -Wall -Wextra -Iincludes -Ilibft
-LDFLAGS = -Llibft -lft
+CFLAGS = -Wall -Wextra -Werror  -Iincludes -Ilibft
+LDFLAGS = -lmlx -framework OpenGl -framework AppKit -Llibft -lft
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
@@ -57,7 +47,7 @@ $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	$(CC) $(CFLAGS) -o $@ -c $<
 
 clean:
-		rm -rfv $(OBJ_PATH)
+		rm -fv $(OBJ)
 
 fclean: clean
 		make -C libft fclean

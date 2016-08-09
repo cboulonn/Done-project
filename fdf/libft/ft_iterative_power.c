@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_iterative_power.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cboulonn <cboulonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/09 13:51:49 by cboulonn          #+#    #+#             */
-/*   Updated: 2016/07/07 13:58:45 by cboulonn         ###   ########.fr       */
+/*   Created: 2016/05/09 17:06:24 by cboulonn          #+#    #+#             */
+/*   Updated: 2016/05/09 17:09:34 by cboulonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# include <stdlib.h>
-# include <fcntl.h>
-# include "libft/libft.h"
-# define BUFF_SIZE 80
+#include "libft.h"
 
-typedef struct		s_lst
+int		ft_iterative_power(int nb, int power)
 {
-	char			*res_buf;
-	int				save_fd;
-	struct s_lst	*next;
-}					t_lst;
+	int	result;
+	int	a;
 
-int					get_next_line(int fd, char **line);
-
-#endif
+	result = 1;
+	a = 1;
+	if (power < 0)
+		return (0);
+	if (power == 0)
+		return (1);
+	while (a <= power)
+	{
+		result = nb * result;
+		a++;
+	}
+	return (result);
+}

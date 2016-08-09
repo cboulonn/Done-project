@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cboulonn <cboulonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/09 13:51:49 by cboulonn          #+#    #+#             */
-/*   Updated: 2016/07/07 13:58:45 by cboulonn         ###   ########.fr       */
+/*   Created: 2016/04/10 15:25:53 by cboulonn          #+#    #+#             */
+/*   Updated: 2016/04/12 11:01:22 by cboulonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# include <stdlib.h>
-# include <fcntl.h>
-# include "libft/libft.h"
-# define BUFF_SIZE 80
+#include "libft.h"
 
-typedef struct		s_lst
+t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	char			*res_buf;
-	int				save_fd;
-	struct s_lst	*next;
-}					t_lst;
+	t_list	*save_map;
+	t_list	*map;
 
-int					get_next_line(int fd, char **line);
-
-#endif
+	save_map = NULL;
+	if ((save_map = f(lst)) == NULL)
+		return (NULL);
+	map = save_map;
+	map->next = NULL;
+	while (lst->next)
+	{
+		lst = lst->next;
+		map->next = f(lst);
+		if (map->next == NULL)
+			return (NULL);
+		map = map->next;
+	}
+	return (save_map);
+}
